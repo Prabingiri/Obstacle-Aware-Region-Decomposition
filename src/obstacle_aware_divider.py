@@ -6,8 +6,7 @@ from shapely.ops import unary_union
 from shapely.geometry import Polygon, MultiPolygon, GeometryCollection, LineString, MultiLineString
 from rtree import index
 
-# from src.module4_1 import solve_for_root_brent, solve_for_root_newton_raphson, \
-#     solve_for_root_with_defensive_newton_rhapson
+
 from src.numerical_solution import solve_for_root_with_defensive_newton_rhapson, solve_for_root_brent
 
 
@@ -168,6 +167,13 @@ class ObstacleAwareDivider:
         """
         edges = []
         if not geom or geom.is_empty:
+            return edges
+
+        # If the geometry itself is a LineString, extract its segments.
+        if geom.geom_type == 'LineString':
+            coords = list(geom.coords)
+            for i in range(len(coords) - 1):
+                edges.append((coords[i], coords[i + 1]))
             return edges
 
         boundary = geom.boundary

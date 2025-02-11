@@ -13,7 +13,7 @@ class OptimalAxisSelection:
     }
 
     def __init__(self, region, obstacles, user_metric=None, numerical_method='newton',
-                 tie_threshold=1e-1):
+                 tie_threshold=1e-2):
         """
         We keep the essential parameters and default to NWCRT if user_metric is missing or invalid.
         """

@@ -90,8 +90,8 @@ if __name__ == "__main__":
 
     if data_type == 'iowa':
         # provide the file path needed
-        region_file = 'src/resource/data/IOWA-BOUNDARY.geojson'
-        obs_file = 'src/resource/data/FAA-IOWA.geojson'
+        region_file = 'resource/dataset/iowa/IOWA-BOUNDARY.geojson'
+        obs_file = 'resource/dataset/iowa/FAA-IOWA.geojson'
         for metric in metrics:
             for depth in depths:
                 logging.info(f"Running for metric={metric}, depth={depth}")
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
     elif data_type == 'synthetic':
         # provide the file path needed
-        synthetic_file_path = "synthetic_data_generation/5_percent_obstacles.json"
+        synthetic_file_path = "resource/dataset/synthetic_data_generated/100x100/synthetic_data_5percent_50maxobs_1var.json"
         try:
             logging.info(f"Loading synthetic data from {synthetic_file_path}...")
             with open(synthetic_file_path, "r") as f:

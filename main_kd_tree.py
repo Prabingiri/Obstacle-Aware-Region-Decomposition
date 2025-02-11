@@ -74,13 +74,13 @@ if __name__ == "__main__":
     method = 'newton'
 
     if data_type == 'iowa':
-        region_file_path = 'src/resource/data/IOWA-BOUNDARY.geojson'
-        obstacles_file_path = 'src/resource/data/FAA-IOWA.geojson'
+        region_file_path = 'resource/dataset/iowa/IOWA-BOUNDARY.geojson'
+        obstacles_file_path = 'resource/dataset/iowa/FAA-IOWA.geojson'
         for depth in depths:
             main(region_file_path, obstacles_file_path, depth, data=data_type, method=method)
 
     elif data_type == 'synthetic':
-        synthetic_file_path = "synthetic_data_generation/synthetic_data.json"
+        synthetic_file_path = "resource/dataset/synthetic_data_generated/100x100/synthetic_data_5percent_50maxobs_1var.json"
         try:
             logging.info(f"Loading synthetic data from {synthetic_file_path}...")
             with open(synthetic_file_path, "r") as f:
