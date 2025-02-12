@@ -1,7 +1,6 @@
 import math
 import unittest
 from shapely.geometry import Polygon, box
-# Adjust the import paths as needed.
 from src.kd_tree_perimeter_decomposition import KDTreePartitioning, validate_geometry
 
 
