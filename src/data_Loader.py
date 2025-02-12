@@ -9,7 +9,7 @@ import pyproj
 
 class DataPreprocessor:
     """
-    A class to preprocess spatial data for Module 1.
+    A class to preprocess spatial data
     """
 
     def __init__(self, region_file_path, obstacles_file_path, target_epsg=32615):
