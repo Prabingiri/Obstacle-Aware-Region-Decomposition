@@ -2,53 +2,17 @@
 File: compare_wcrt_strategies.py
 
 Description:
-    A module to compare KD-tree decomposition vs. Obstacle-Aware decomposition
+    A module to compare naive KD tree, KD-tree (perimeter) decomposition vs. Obstacle-Aware decomposition
     across multiple depths, plotting the following metrics:
 
       1) Avg WCRT + Max WCRT (together)
       2) Min WCRT + Mean-Square Deviation (together)
       3) Aspect Ratio (alone)
+      4) execution time
 
     We produce two styles of plots for each grouping:
       - bar plots
       - line plots
-
-    So total 3 * 2 = 6 images if you call all methods.
-    Optionally enable log-scale on the y-axis for each method.
-
-Usage Example:
-    from compare_wcrt_strategies import WCRTComparisonPlotter
-
-    # Suppose we have depths [2,4,6,8,10], and metric arrays for KD-tree vs. Obstacle-Aware.
-    # kd_avg_wcrt, kd_min_wcrt, kd_max_wcrt, kd_msdev, kd_aspect_ratio, ...
-    # obs_avg_wcrt, obs_min_wcrt, obs_max_wcrt, obs_msdev, obs_aspect_ratio, ...
-
-    plotter = WCRTComparisonPlotter(
-        depths=depths,
-        kd_avg_wcrt=kd_avg_wcrt,
-        kd_min_wcrt=kd_min_wcrt,
-        kd_max_wcrt=kd_max_wcrt,
-        kd_msdev=kd_msdev,
-        obs_avg_wcrt=obs_avg_wcrt,
-        obs_min_wcrt=obs_min_wcrt,
-        obs_max_wcrt=obs_max_wcrt,
-        obs_msdev=obs_msdev,
-        kd_aspect_ratio=kd_aspect_ratio,
-        obs_aspect_ratio=obs_aspect_ratio
-    )
-
-    # 1) Avg + Max WCRT => bar
-    plotter.plot_avg_and_max_wcrt_bar(log_scale=False)
-
-    # 2) Min WCRT + MS Dev => bar
-    plotter.plot_min_and_msdev_bar(log_scale=False)
-
-    # 3) Aspect Ratio => bar
-    plotter.plot_aspect_ratio_bar(log_scale=False)
-
-    # Or do the line equivalents:
-    plotter.plot_avg_and_max_wcrt_line(log_scale=False)
-    plotter.plot_min_and_msdev_line(log_scale=False)
     plotter.plot_aspect_ratio_line(log_scale=False)
 """
 
@@ -703,40 +667,15 @@ def plot_aspect_and_execution(depths, kd_aspect=None, obs_aspect=None, kd_exec=N
     # Display the plots
     plt.show()
 
-# # Example usage with simulated data
-# depths = [1, 2, 3, 4, 5]
-# kd_aspect = [0.6, 0.65, 0.7, 0.72, 0.75]
-# obs_aspect = [0.55, 0.6, 0.62, 0.65, 0.68]
-# kd_exec = [0.1, 0.15, 0.2, 0.35, 0.5]
-# obs_exec = [0.12, 0.18, 0.25, 0.4, 0.55]
-
-
-
-# Example usage (if you run this file as a script):
 
 # Example usage (if you run this file as a script):
 if __name__ == "__main__":
     import random
 
+    # Provide output data in list forms corresponding to depths
+
     # Synthetic Data
     # depths = [2, 3, 4, 5, 6]
-
-    # KD-tree
-    # kd_avg_wcrt      = [138.76, 90.37, 61.48, 44.025, 34]
-    # kd_min_wcrt  = [119.09,  49,  17.44,  14.06, 3.96]
-    # kd_max_wcrt  = [173,  140,  125.65,  124,  116]
-    # kd_msdev     = [21,   26,   31,   23,   22]
-    # kd_aspect_ratio = [0.69,   0.48,   0.502,   0.419,   0.35]
-    #
-    # # Obstacle-Aware
-    # obs_avg_wcrt   = [139, 87, 58, 37.97, 25.97]
-    # obs_min_wcrt = [128,  81.21,  47.36,  28.44, 17.34]
-    # obs_max_wcrt = [151.64,  91.98,  68.39,  55.54, 55.54]
-    # obs_msdev    = [11.65,   3.82,   7.02,   6.002,   6.356]
-    # obs_aspect_ratio = [0.666,   0.67,   0.61,   0.663,   0.661]
-
-
-
     # # # # Iowa Data
     depths = [2, 4, 6, 8, 10]
     # #
