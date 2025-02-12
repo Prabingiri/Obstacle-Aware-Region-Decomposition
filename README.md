@@ -1,14 +1,14 @@
 # Obstacle-Aware-Region-Decomposition
 MDM-2025
 
-This repository implements a suite of algorithms for hierarchical decomposition of spatial regions with obstacles. Developed as part of our research into optimal spatial subdivision for autonomous navigation, the project compares multiple partitioning strategies to determine the most effective approach.
+This repository implements a set of algorithms for the hierarchical decomposition of spatial regions with obstacles. This is part of our research into optimal spatial subdivision; the project compares multiple partitioning strategies to determine the most effective approach.
 
 ## Overview
 
 The project includes two main pipelines:
 
 - **Sweepline Based Hierarchical Decomposition (main_decomposition.py):**  
-  This is our primary pipeline, which leverages modules for preprocessing, obstacle-aware division, and optimal axis selection to recursively decompose a region into navigable subregions. It is designed for robust performance on both real-world (e.g., Iowa) and synthetic datasets.
+  Our primary pipeline incorporates modules for preprocessing, obstacle-aware division, and optimal axis selection to recursively decompose a region into navigable subregions. It is designed for robust performance on both real-world (Iowa) and synthetic datasets.
 
 - **KD‑Tree Partitioning (main_kd_tree.py):**  
   This pipeline implements two classic KD‑Tree–based partitioning strategies (including both naive and perimeter‑based approaches) to serve as a performance baseline for our primary hierarchical decomposition method.
@@ -27,7 +27,7 @@ The project includes two main pipelines:
 
 - **resource/**
 
-  Contains the resources including datasets, and the functions to generate synthetic dataset. Checkout its own readme file.
+  It contains the resources, datasets, and functions to generate synthetic datasets. Check out its readme file.
 
 - **tests/**  
   Contains unit tests for each module to ensure correctness.
