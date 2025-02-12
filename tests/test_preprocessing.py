@@ -4,8 +4,6 @@ from shapely.geometry import Polygon, MultiPolygon, Point
 from shapely.errors import TopologicalError
 from shapely.ops import unary_union
 
-# Import the class to test.
-# Change the import below to match the file name or package structure.
 from src.preprocessing import RegionWithObstacles
 
 # Disable logging during tests to keep the output clean
