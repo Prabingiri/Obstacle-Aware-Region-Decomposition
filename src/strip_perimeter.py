@@ -208,7 +208,6 @@ class Strip:
         if unaligned_portion.is_empty:
             return None
 
-        # --- NEW LOGIC: Flatten possible MultiLineString or GeometryCollection ---
         return self._flatten_to_lines(unaligned_portion)
 
     def _flatten_to_lines(self, geom):
@@ -326,7 +325,7 @@ class Strip:
             include_cumulative (bool): If True, add the perimeter up to min(coord1, coord2).
 
         Returns:
-            float: The perimeter of the custom strip, plus optional cumulative portion.
+            float: The perimeter of the custom strip, plus the optional cumulative portion.
         """
         # Ensure ordering
         if coord1 > coord2:
@@ -364,8 +363,6 @@ class Strip:
         if not region_boundary or region_boundary.is_empty:
             logging.warning("Region boundary is empty or None. No obstacle perimeter subtractions.")
             # In such a scenario, either return sum of all obstacle exteriors
-            # or 0.0 if you rely on boundary alignment logic.
-            # Let's just fall back to summing up all obstacles' perimeter without alignment check:
             return sum(obs.length for obs in self.obstacles if isinstance(obs, Polygon)) \
                    + sum(poly.length for mp in [o for o in self.obstacles if isinstance(o, MultiPolygon)]
                          for poly in mp.geoms)
@@ -607,6 +604,8 @@ def validate_and_fix_geometries(region, obstacles):
         return region, fixed_obstacles
 
 
+
+#=================test=================
 if __name__ == "__main__":
     # Example usage:
     region = Polygon([(0, 0), (100, 0), (100, 100), (0, 100), (0, 0)])
