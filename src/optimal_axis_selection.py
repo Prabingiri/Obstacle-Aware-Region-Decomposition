@@ -5,7 +5,7 @@ from src.strip_perimeter import Strip
 class OptimalAxisSelection:
     """
     Simplified class that *only* evaluates NWCRT and uses MSDU as a tie-breaker.
-    All other metrics and unnecessary computations are commented out for efficiency.
+    All other metrics and tie breaker can be added here
     """
 
     _METRIC_IS_MINIMIZED = {
