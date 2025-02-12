@@ -1,7 +1,7 @@
 # Obstacle-Aware-Region-Decomposition
 MDM-2025
 
-This repository implements a set of algorithms for the hierarchical decomposition of spatial regions with obstacles. This is part of our research into optimal spatial subdivision; the project compares multiple partitioning strategies to determine the most effective approach.
+This repository implements a set of algorithms for the hierarchical decomposition of spatial regions with obstacles. This is part of our research into optimal spatial subdivision; the project compares multiple partitioning strategies.
 
 ## Overview
 
