@@ -50,11 +50,7 @@ class DepthMetricsComparator:
         ]
 
     def collect_metrics(self) -> None:
-        """
-        Recursively scans all subdirectories under self.base_path that match 'depth_*'
-        and reads CSV files to extract the last-row values for the columns_of_interest.
-        Populates self.results with the data.
-        """
+
         if not os.path.isdir(self.base_path):
             raise NotADirectoryError(f"Base path '{self.base_path}' is not a directory.")
 
@@ -142,7 +138,7 @@ class DepthMetricsComparator:
         """
         For each of the columns_of_interest, this method:
           1) Pivots the data so that X-axis = depth, lines = different metrics.
-          2) Plots a line chart with markers so you can see how each metric changes across depths.
+          2) Plots line charts.
           3) Saves each plot as a PNG file named e.g. "plot_WCRT.png".
         """
         df = self.to_dataframe()
