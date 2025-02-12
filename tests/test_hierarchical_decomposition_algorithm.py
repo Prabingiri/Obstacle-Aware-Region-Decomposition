@@ -5,7 +5,6 @@ from shapely.ops import unary_union
 
 from src.hierarchical_decomposition_algorithm import HierarchicalDecomposition
 
-# Constants defined in the module (or re-define them here if not imported)
 DRONE_THRESHOLD = 5.0
 COVERAGE_RATIO_STOP = 0.90
 
