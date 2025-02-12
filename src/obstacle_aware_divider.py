@@ -19,10 +19,6 @@ class ObstacleAwareDivider:
         self.axis = self.sp.axis
         self.method = method
 
-        # If you are not using an R-tree, we can comment this out:
-        # self.spatial_index = None
-
-        # Compute region-level diagonal + perimeter => WCRT
         self.d_R = self.sp.calculate_region_diagonal()
         self.P_R = self.sp.calculate_total_obstacle_perimeter()
         self.WCRT_total = self.d_R + 0.5 * self.P_R
@@ -66,7 +62,7 @@ class ObstacleAwareDivider:
             return self.handle_case_3(coord_j_minus_1, coord_j, g_j_minus_1, g_j)
 
         # Fallback: midpoint
-        return 0.5 * (coord_j_minus_1 + coord_j)
+        # return 0.5 * (coord_j_minus_1 + coord_j)
 
     def g(self, cut_coord):
         """
@@ -124,7 +120,7 @@ class ObstacleAwareDivider:
         Returns 1, 2, or 3.
           1 => no obstacle perimeter
           2 => obstacles present, no degeneracy
-          3 => degeneracy (an obstacle edge collinear with boundary)
+          3 => degeneracy (an obstacle edge collinear with boundary, sweepline boundary)
         """
         coord_prev, coord_curr, strip_geometry = strip
         obstacle_portions = self.get_obstacles_within_strip(strip_geometry)
