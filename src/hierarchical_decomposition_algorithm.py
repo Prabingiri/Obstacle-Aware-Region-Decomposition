@@ -22,7 +22,7 @@ class HierarchicalDecomposition:
     Recursively decompose a region (with obstacles) into valid, navigable subregions.
 
     Key Stopping Conditions (unchanged):
-      1) If obstacle coverage >= 90%:
+      1) If obstacle coverage >= 90%: --change according to requirement
          - If leftover free area < DRONE_THRESHOLD => store region (stop).
          - Else if the largest connected free space >= DRONE_THRESHOLD => subdivide more.
       2) If depth >= max_depth => store region.
@@ -158,7 +158,6 @@ class HierarchicalDecomposition:
     def _attempt_partition(self, region, obstacles, axis, depth, division_point, subL, subR) -> bool:
         """
         Attempt the partition along 'axis' using the ALREADY known division_point
-        and subregions (subL, subR). Avoids re-calling divider.
         """
         self.axis_stack.append(axis)
 
