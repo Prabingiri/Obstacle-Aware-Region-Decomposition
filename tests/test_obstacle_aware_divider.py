@@ -5,8 +5,6 @@ from shapely.ops import unary_union
 from shapely import make_valid
 from unittest.mock import patch
 
-# Adjust the import paths as needed.
-# Here we assume the module is located at src/obstacle_aware_divider.py.
 from src.obstacle_aware_divider import ObstacleAwareDivider, validate_and_fix_geometries
 
 
