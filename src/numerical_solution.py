@@ -6,62 +6,6 @@ import logging
 # Configure logging minimally or comment it out if not needed
 logging.basicConfig(level=logging.WARNING)
 
-# def solve_for_root_brent(f, a, b, tol=1e-7, max_iter=100):
-#     """
-#     Finds a root of f(x)=0 in the interval [a,b] using Brent's method.
-#     We keep only essential checks and minimal logging.
-#     """
-#     # logging.info(f"[Brent] Interval [{a}, {b}], tol={tol}")
-#     fa, fb = f(a), f(b)
-#     if fa * fb > 0:
-#         raise ValueError("Brent: f(a)*f(b) must be <0 for a guaranteed sign change.")
-#
-#     c, fc = a, fa
-#     d, e = b - a, b - a
-#
-#     for iteration in range(max_iter):
-#         if fb * fc > 0:
-#             c, fc = a, fa
-#             d, e = b - a, b - a
-#
-#         if abs(fc) < abs(fb):
-#             a, b, c = b, c, a
-#             fa, fb, fc = fb, fc, fa
-#
-#         m = 0.5 * (c - b)
-#         tol_act = 2 * tol * max(abs(b), 1.0)
-#
-#         # logging.debug(f"[Brent] Iter={iteration}, b={b}, f(b)={fb}, m={m}")
-#         if abs(m) <= tol_act or fb == 0.0:
-#             # logging.info(f"[Brent] Converged at {b}")
-#             return b
-#
-#         if abs(e) >= tol_act and abs(fa) > abs(fb):
-#             s = fb / fa
-#             if a == c:
-#                 # Secant
-#                 p, q = 2 * m * s, 1 - s
-#             else:
-#                 q, r = fa / fc, fb / fc
-#                 p = s * (2 * m * q * (q - r) - (b - a) * (r - 1))
-#                 q = (q - 1) * (r - 1) * (s - 1)
-#
-#             if p > 0:
-#                 q = -q
-#             p = abs(p)
-#             if 2 * p < min(3 * m * q - abs(tol_act * q), abs(e * q)):
-#                 e, d = d, p / q
-#             else:
-#                 d, e = m, m
-#         else:
-#             d, e = m, m
-#
-#         a, fa = b, fb
-#         b += d if abs(d) > tol_act else (-tol_act if m < 0 else tol_act)
-#         fb = f(b)
-#
-#     # logging.warning(f"[Brent] Did not converge within {max_iter} iterations; returning {b}")
-#     return b
 
 def solve_for_root_brent(f, a, b, tol=1e-7, max_iter=100):
     """
@@ -176,7 +120,7 @@ def solve_for_root_with_defensive_newton_rhapson(
     f, f_prime, x0, bracket, tol=1e-7, max_iter_nr=100, max_iter_brent=100
 ):
     """
-    Attempts Newton-Raphson first. If it fails, fallback to our custom Brent solver.
+    Attempts Newton-Raphson first. If it fails, fall back to our custom Brent solver.
     """
     try:
         return solve_for_root_newton_raphson(f, f_prime, x0, tol=tol, max_iter=max_iter_nr)
