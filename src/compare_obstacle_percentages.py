@@ -112,7 +112,7 @@ def plot_std_dev_subplots(strategies_data, depths, obstacle_variations, use_log=
     fig.supxlabel("Depth", fontsize=14)
     fig.supylabel("WCRT Standard Deviation", fontsize=14)
 
-    plt.tight_layout(rect=[0, 0.03, 1, 0.92])  # slightly adjusted to fit the legend on top
+    plt.tight_layout(rect=[0, 0.03, 1, 0.92]) 
     plt.show()
 
 
@@ -121,9 +121,6 @@ def plot_max_wcrt_bar_charts(strategies_data, depths, obstacle_variations, use_l
     Creates a 2x3 grid of bar-chart subplots for Maximum WCRT.
     Each subplot now uses its own y-axis label (no shared Y-axis).
     If use_log=True, sets the Y-axis to log scale.
-
-    We now use a single legend for the entire figure by collecting
-    handles/labels from the first subplot.
     """
     import matplotlib.pyplot as plt
     import numpy as np
@@ -139,7 +136,6 @@ def plot_max_wcrt_bar_charts(strategies_data, depths, obstacle_variations, use_l
     n_strategies = len(strategies)
     n_depths = len(depths)
 
-    # Reduced figure size for paper-friendliness, but adjust as you like
     fig, axs = plt.subplots(3, 2, figsize=(10, 6))
     axs = axs.flatten()
 
@@ -187,7 +183,6 @@ def plot_max_wcrt_bar_charts(strategies_data, depths, obstacle_variations, use_l
 
     # Create a single legend from the handles/labels of the first subplot
     handles, labels = axs[0].get_legend_handles_labels()
-    # Position legend at top center, for example
     fig.legend(handles, labels, loc='upper center', ncol=len(strategies), fontsize=9)
 
     # fig.suptitle("Maximum WCRT (Bar Charts) Across Depths & Obstacles", fontsize=12)
