@@ -14,7 +14,7 @@ COVERAGE_RATIO_STOP = 0.90
 
 class NaiveKDTreePartitioning:
     """
-    Naive KD-Tree approach. Instead of using half-perimeter,
+    Naive KD-Tree approach. Instead of using perimeter properties,
     we simply split at the bounding box midpoint along the chosen axis.
     Everything else (obstacle clipping, stopping conditions) is the same
     as KDTreePartitioning so we can compare fairly.
