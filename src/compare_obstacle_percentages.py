@@ -6,7 +6,7 @@ import random
 def plot_max_wcrt_subplots(strategies_data, depths, obstacle_variations, use_log=False):
     """
     Plots Maximum WCRT vs. Depth in a 2x3 grid of subplots for each obstacle percentage,
-    with fixed colors for each strategy and common axis labels for the entire figure.
+
     If use_log=True, the Y-axis will be set to log scale.
     """
     strategy_colors = {
@@ -106,11 +106,8 @@ def plot_std_dev_subplots(strategies_data, depths, obstacle_variations, use_log=
 
     # Create a single legend from the handles/labels of the first subplot
     handles, labels = axs[0].get_legend_handles_labels()
-    # Adjust legend location as desired (e.g., 'upper center', 'best', etc.)
-    fig.legend(handles, labels, loc='upper center', ncol=len(strategy_colors), fontsize=8)
 
-    # Optional: you can uncomment the suptitle if desired
-    # fig.suptitle("WCRT Standard Deviation vs. Depth Across Strategies", fontsize=16)
+    fig.legend(handles, labels, loc='upper center', ncol=len(strategy_colors), fontsize=8)
 
     fig.supxlabel("Depth", fontsize=14)
     fig.supylabel("WCRT Standard Deviation", fontsize=14)
@@ -271,21 +268,7 @@ if __name__ == "__main__":
     obstacle_variations = [5, 10, 15, 20, 25, 30]
     depths = [2, 3, 4, 5, 6]
 
-    # Generate synthetic data
-    # strategies_data = {}
-    # for strategy in strategies:
-    #     strategies_data[strategy] = {}
-    #     for obs in obstacle_variations:
-    #         max_wcrt = [random.uniform(50000, 60000) / (depth * (1 + obs / 100)) for depth in depths]
-    #         std_dev = [random.uniform(500, 2000) / depth for depth in depths]
-    #         strategies_data[strategy][obs] = {
-    #             "max_wcrt": max_wcrt,
-    #             "std_dev": std_dev
-    #         }
-
-
     #Data Input
-
     strategies_data = {
         "Naive KD": {
             5: {
