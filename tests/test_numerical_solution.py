@@ -1,8 +1,6 @@
 import math
 import unittest
 
-# Import the numerical solvers.
-# Adjust the import paths as needed.
 from src.numerical_solution import (
     solve_for_root_brent,
     solve_for_root_newton_raphson,
